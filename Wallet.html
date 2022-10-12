@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Wallet DApp</title>
+        <style>
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                height: 100vh;
+            }
+            span {
+                margin-bottom: 20px;
+            }
+
+            button {
+                background-color: blue;
+                padding: 15px 35px;
+                border: none;
+                color: white;
+                border-radius: 10px;
+                cursor: pointer;
+             }
+        </style>
+    </head>
+    <body style="display: flex; ">
+        <h1> My Wallet DApp </h1>
+        <span>My Wallet Address</span>
+        <span class="wallet" style="display: block"></span>
+        <button onClick={connectWallet()}>Connect Wallet</button>
+    </body> 
+    <script>
+        const connectWallet = async () => {
+		try {
+			const { ethereum } = window;
+            console.log(ethereum)
+			  if (!ethereum) {
+				alert('You need to install metamask');
+			    return;
+			  }
+			const accounts = await ethereum.request({
+				method: 'eth_requestAccounts',
+			});
+            console.log(accounts[0])
+            const getAccountsResult = document.getElementById('wallet')
+            getAccountsResult.innerHTML = accounts[0] || 'Not able to get accounts';
+		} catch (error) {
+			 alert('There was an error connecting to the wallet');
+		}
+	};
+    </script>
+</html>
