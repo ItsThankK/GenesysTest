@@ -3,7 +3,7 @@
 For learnable '22 test
 
 To test
-##kindly open in VS code under a file.
+##kindly open(Wallet.html) in VS code under a folder.
 ##right click on Wallet.html
 ##click open with live server 
 
